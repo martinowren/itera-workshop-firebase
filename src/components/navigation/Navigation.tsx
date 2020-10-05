@@ -1,9 +1,9 @@
 import React, { FC, useContext } from 'react';
-import AuthContext from '../../auth/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import { Link } from 'react-router-dom';
 
 export const Navigation: FC = () => {
-    const authContext = useContext(AuthContext);
+    const authContext = useAuth(); 
     console.log(authContext)
     return (
         <nav>

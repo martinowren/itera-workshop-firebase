@@ -16,6 +16,8 @@ export const initialAuthContext: AuthContextType = {
     logout: undefined,
 };
 
-const AuthContext = React.createContext<AuthContextType>(initialAuthContext);
+export const AuthContext = React.createContext<AuthContextType>(initialAuthContext);
 
-export default AuthContext;
+export function useAuth() {
+    return React.useContext(AuthContext);
+}
