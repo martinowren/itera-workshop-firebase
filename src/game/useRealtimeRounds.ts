@@ -11,7 +11,7 @@ export function useRealtimeRounds(gameId: GameID | undefined): [Round[], Round |
                 .collection('games')
                 .doc(gameId)
                 .collection('rounds')
-                .orderBy('timestamp')
+                .orderBy('timestamp', 'desc')
                 .onSnapshot(function(querySnapshot) {
                     const rounds: Round[] = []
                     querySnapshot.forEach(function(doc) {

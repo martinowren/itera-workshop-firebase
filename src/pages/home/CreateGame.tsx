@@ -1,12 +1,11 @@
-import React, { FC, useCallback, useState } from 'react';
-import { addGame } from '../game/game.service';
+import React, { FC, useState } from 'react';
+import { addGame } from '../../game/game.service';
 
-import { TextInput } from '../../components/input/TextInput';
+import { TextInput } from '../../components/text-input/TextInput';
 import { useAuth } from '../../auth/AuthContext';
 
 const CreateGame: FC = () => {
     const authContext = useAuth();
-    const [modalOpen, setModalOpen] = useState(false);
     const [gameName, setGameName] = useState("");
 
     const createGame = () => {
@@ -15,8 +14,7 @@ const CreateGame: FC = () => {
                 addGame({
                     name: gameName,
                     owner: authContext.user.email,
-                    deckId: 'default',
-                    cardTsar: authContext.user.email,
+                    players: [],
                 });
             } else {
                 throw new Error("email for user is not available!");
@@ -27,14 +25,12 @@ const CreateGame: FC = () => {
     }
 
     return (
-        <>
-            <div>
-                <TextInput value={gameName} onChange={(e) => setGameName(e.target.value)} label="Game name" />
-                <button onClick={() => createGame()}> 
-                    New Game
-                </button>
-            </div>
-        </>
+        <div>
+            <TextInput value={gameName} onChange={(e) => setGameName(e.target.value)} label="Game name" />
+            <button onClick={() => createGame()}> 
+                New Game
+            </button>
+        </div>
     )
 }
 

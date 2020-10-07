@@ -3,11 +3,11 @@ import CreateGame from './CreateGame';
 import GameList from './GameList';
 import { Game } from '../../types';
 
-export interface HomeProps {
+export interface HomePageProps {
     games: Game[];
 }
 
-export const Home: FC<HomeProps> = ({games}) => {
+export const HomePage: FC<HomePageProps> = ({games}) => {
     return (
         <div className='home'>
             

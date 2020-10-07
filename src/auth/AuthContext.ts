@@ -1,6 +1,5 @@
 import React from 'react';
 import firebase from 'firebase';
-import { User } from '../types';
 
 export type AuthContextType = {
     user: firebase.User | null;

@@ -1,30 +1,29 @@
 import React, { FC } from 'react';
-import firebase from 'firebase';
 import { Switch, Route } from "react-router-dom";
 
 import { useRealtimeGames } from './game/useRealtimeGames';
 import useFirebaseAuth from './auth/useFirebaseAuth';
 import { AuthContext } from './auth/AuthContext';
-import { Navigation } from './components';
-import { Home, Game } from './pages';
+import { HomePage, CADGame, LoginPage } from './pages';
 
 const App: FC = () => {  
   const authContext = useFirebaseAuth();
-
+  console.log(authContext)
   const games = useRealtimeGames();
   
   return (
     <AuthContext.Provider value={authContext}>
-      <div className="app">
-              <Navigation />
-              
+      <div className="app">              
               <div id="app__main">
                 <Switch>
                   <Route path="/" exact>
-                    <Home games={games} />
+                    <HomePage games={games} />
                   </Route> 
                   <Route path="/game/:gameId" exact>
-                    <Game games={games} />
+                    <CADGame games={games} />
+                  </Route>
+                  <Route path="/login">
+                    <LoginPage />
                   </Route>
 
                 </Switch>

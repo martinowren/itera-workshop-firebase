@@ -1,2 +1,3 @@
-export { Home } from './home/Home';
-export { Game } from './game/Game';
+export { HomePage } from './home/HomePage';
+export { CADGame } from './cards-agains-developers-game/CADGamePage';
+export { LoginPage } from './login/LoginPage';

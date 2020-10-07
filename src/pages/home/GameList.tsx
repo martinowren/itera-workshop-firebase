@@ -1,40 +1,28 @@
 import React, { FC } from 'react';
-import { addPlayerState } from '../game/game.service';
+import { updateGame } from '../../game/game.service';
 import { Game, GameID } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useHistory } from 'react-router';
+import { getScore } from '../cards-agains-developers-game/helpers';
 
 export interface GameListProps {
     games: Game[];
 }
 
 const GameList: FC<GameListProps> = ({games}) => {
-
-    return (
-        <ul className='game-list'>
-            { games.map(game => {
-                return <GameItem gameId={game.id as GameID} name={game.name}  />
-            })}
-        </ul>
-    )
-}
-
-const GameItem: FC<{gameId: GameID, name: string}> = ({gameId, name}) => {
     const authContext = useAuth();
     const history = useHistory();
 
     const joinGame = async (gameId: GameID) => {
+        const game = games.find(g => g.id === gameId) as Game;
         try {
-            if (authContext.user && authContext.user.displayName) {
-                await addPlayerState(gameId, {
-                    username: authContext.user.displayName,
-                    cardsOnHand: [],
-                    points: 0,
-                    turns: [],
+            if (authContext.user && authContext.user.email) {
+                await updateGame(gameId, {
+                    players: Array.from(new Set([...game.players, authContext.user.email]))
                 });
                 history.push(`/game/${gameId}`);
             } else {
-                throw new Error("displayName for user is not available!")
+                throw new Error("email for user is not available!")
             }
         } catch (e) {
             console.error(e);
@@ -42,10 +30,19 @@ const GameItem: FC<{gameId: GameID, name: string}> = ({gameId, name}) => {
     }
 
     return (
-        <li className='game-list__item'>
-            <h4>{name}</h4>
-            <button onClick={() => joinGame(gameId)}>Join Game</button>
-        </li>
+        <ul className='game-list'>
+            { games.map(game => {
+                return (
+                    <li className='game-list__item' key={game.id}>
+                        <h4>{game.name}</h4>
+                        <div>Owner: {game.owner}</div>
+                        <div>Joined players: {game.players.length}</div>
+                        <div>Winner: {game.winner}</div>
+                        <button onClick={() => joinGame(game.id)}>Join Game</button>
+                    </li>
+                )
+            })}
+        </ul>
     )
 }
 
