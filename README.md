@@ -1,8 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Web development with Firebase Course
+Welcome to our Firebase course 🙌. This course will help you understand some of the basic functionality of Firebase and how to use it together with a web application to create awesome stuff!
 
-## Available Scripts
+## 1 prerequisites
 
-In the project directory, you can run:
+### Node and npm:
+This course requires that you have node installed. Please follow the next steps if you have not installed node before.
+- ✅ Download the latest stable version from https://nodejs.org.
+- ✅ To verify, write `node -v` in the console application. You should see a version number returned in your console application.
+- ✅ To verify that npm is also installed, write `npm -v` in the console application.
+
+### Yarn
+TODO: Do we need Yarn installed?
+
+### Git:
+Another requirement for running this project is Git. Please follow the guide [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install Git if you have not already.
+
+### Google account
+In order to use your own Firebase project you need to have a Google account. 
+
+## 2 Test that the web application starts
+
+### Init the project:
+- ✅ Direct yourself to the folder you want to include this project and then clone this project by typing `git clone <link to repo>` in your console application.
+- ✅ After cloning this project, remember to `cd` into the project folder and run `yarn install` (Psst. `cd` stand for change directory and is the same as opening the folder in the finder app or directory on your mac/computer).
 
 ### `yarn start`
 
@@ -12,33 +32,32 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
+Builds the app for production, in this case to deploy to firebase, to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 3 Course information
+The goal of the course is to create a game using functionality in Firebase. We have created the application skeleton and it will be up to you to connect it together with Firebase. Of course with some proper task descriptions and assistance from us if needed. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The game that will be created is "Cards Against Developers" a bit more friendly and developer specific version of Cards Against Humanity.
 
-### `yarn eject`
+We have seperated the course into multiple parts, each part has its own Readme file under the tasks folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+👉 Tip: If you are stuck there is a seperate solutions folder. We reccomended trying or asking us before resorting to using the solution examples. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Part 1 goals:**
+- Setup your own firebase project on Firebase console.
+- Connect the application skeleton to Firebase. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Part 2 goals:**
+- Learn how to work with Firestore.
+- CRUD operations and realtime updates
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Part 3 goals:**
+- Add authentication and secure your application. 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Completed all the parts and eager for more? 💪**
+Extra work for those who needs additional challenges: 
+- Frontend work
+- Avoid duplicated cards
