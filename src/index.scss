@@ -3,6 +3,9 @@ $blackColor: #424041;
 $lightGreyColor: #C2C0C3;
 $blueColor: #4FC3E7;
 
+$brown: #3b332c;
+$cream: #FCF9F1;
+
 $mediumFont: calc(10px + 2vmin);
 $smallFont: calc(10px + 1vmin);
 
@@ -10,22 +13,26 @@ $bp-s: 600px;
 $bp-m: 960px;
 $bp-l: 1280px;
 
-body {
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $cream;
 }
 
 .app {
-
+  max-width: 1024px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 25px;
+  * {
+    box-sizing: border-box;
+  }
 }
 
-.app__main {
-  
-}
 
 @import './components/manifest.scss';
 @import './pages/manifest.scss';

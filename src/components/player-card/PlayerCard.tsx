@@ -13,22 +13,22 @@ interface PlayerCardProps {
 
 export const PlayerCard: FC<PlayerCardProps> = ({score, currentRound, playerIsCardTsar, declareWinner, player}) => {
     const playerTurn = currentRound.turns.find(t => t.username === player);
-
+    const playerScore = score[player] || 0;
     return (
        <div className='player'>
-           <div className='player__score'>{score[player]}</div>
            <div className='player__card-frame'>
                { playerTurn && (
                    <WhiteCard
-                       cardId={playerTurn.card} 
-                       showCard={currentRound.showCards}
-                       button={playerIsCardTsar ? <Button onClick={() => declareWinner(player)}>Select winner</Button> : null}
+                   cardId={playerTurn.card} 
+                   showCard={currentRound.showCards}
+                   button={playerIsCardTsar ? <Button onClick={() => declareWinner(player)}>Select winner</Button> : null}
                    />
-               )}
+                   )}
            </div>
            <div className='player__username'>
                {player}
            </div>
+            <div className='player__score'>{playerScore} points</div>
        </div>
     );
 }

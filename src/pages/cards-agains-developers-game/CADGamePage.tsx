@@ -38,7 +38,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
     const authContext = useAuth();
     const params = useParams<{gameId: GameID}>();
     const game = games.find(g => g.id === params.gameId) as Game;
-    
+    const [modalOpen, setModalOpen] = useState(true);
     const [rounds, currentRound] = useRealtimeRounds(params.gameId);
     const [currentRoundId, setCurrentRoundId] = useState<string>();
     
@@ -135,20 +135,20 @@ export const CADGame: FC<GameProps> = ({games}) => {
     
     if (!game) return null; // move up?
 
-    const showingCards = currentRound && currentRound.showCards;;
+    const showCards = currentRound && currentRound.showCards;;
     const showStartGameButton = userOwnsGame(authContext, game) && gameHasNotStarted(rounds);
     const showRevealCardsButton = 
         currentRound &&
         userIsCardTsar(currentRound, authContext) && 
         allHaveSubmittedAWhiteCard(currentRound.cardTsar, game.players, currentRound ? currentRound.turns: []) &&
-        !showingCards; 
+        !showCards; 
     
     const playerIsCardTsar = currentRound && userIsCardTsar(currentRound, authContext);
     const haveSubmittedCard = currentRound && haveSubmittedACardThisRound(currentRound, authContext);
 
     return (
         <>
-            <div className='game'>
+            <div className='table'>
                 <div className='table__black-card'>
                     { currentRound && (
                         <BlackCard cardId={currentRound.blackCard} />
@@ -167,19 +167,21 @@ export const CADGame: FC<GameProps> = ({games}) => {
                 </div>
 
                 <div className='table__players'>
-                    { currentRound && game.players.map(player => (
-                        <PlayerCard 
-                            key={player}
-                            score={score}
-                            currentRound={currentRound}
-                            playerIsCardTsar={playerIsCardTsar}
-                            declareWinner={declareWinner}
-                            player={player}
-                        />
-                    ))}
+                    <div className='table__players__container'>
+                        { currentRound && game.players.map(player => (
+                            <PlayerCard 
+                                key={player}
+                                score={score}
+                                currentRound={currentRound}
+                                playerIsCardTsar={playerIsCardTsar}
+                                declareWinner={declareWinner}
+                                player={player}
+                            />
+                        ))}
+                    </div>
                 </div>
 
-                <div className='game__hand'>
+                <div className='table__hand'>
                     <Hand 
                         cards={cardsOnHand}
                         playCard={playCard}
@@ -187,8 +189,10 @@ export const CADGame: FC<GameProps> = ({games}) => {
                     />
                 </div>
             </div>
-            { game.winner &&
-                <Modal>
+            { game.winner && modalOpen &&
+                <Modal
+                    setModalOpen={setModalOpen}
+                >
                     <p>{game.winner} won the game!</p>
                     <Link to='/'>Exit game</Link>
                 </Modal>

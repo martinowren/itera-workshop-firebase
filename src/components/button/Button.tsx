@@ -6,9 +6,9 @@ export type ButtonProps = {
     size?: 'small';
 }
 export const Button: FC<ButtonProps> = ({onClick, className, children, size}) => {
-    const sizeClass = size ? `ob-button--size-${size}` : '';
+    const sizeClass = size ? `button--size-${size}` : '';
     return (
-        <button  className={`ob-button ${className ? className : ''} ${sizeClass}`} onClick={onClick}>
+        <button  className={`button ${className ? className : ''} ${sizeClass}`} onClick={onClick}>
             {children}
         </button>
     );

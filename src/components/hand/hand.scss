@@ -1,0 +1,14 @@
+.hand {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row nowrap;
+
+    .white-card {
+        margin-right: -40px;
+        &:hover {
+            z-index: 10;
+        }
+    }
+}

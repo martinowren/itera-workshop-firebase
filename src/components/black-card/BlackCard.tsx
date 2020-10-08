@@ -5,7 +5,7 @@ import { CardID, Round } from '../../types';
 export const BlackCard: FC<{cardId: CardID}> = ({cardId}) => {
     const card = blackCards.find(c => c.id === cardId);
     if (card) {
-        return <div className='card card--black'>
+        return <div className='black-card'>
             {card.content}
         </div>
     }

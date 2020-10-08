@@ -14,20 +14,18 @@ const App: FC = () => {
   return (
     <AuthContext.Provider value={authContext}>
       <div className="app">              
-              <div id="app__main">
-                <Switch>
-                  <Route path="/" exact>
-                    <HomePage games={games} />
-                  </Route> 
-                  <Route path="/game/:gameId" exact>
-                    <CADGame games={games} />
-                  </Route>
-                  <Route path="/login">
-                    <LoginPage />
-                  </Route>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage games={games} />
+          </Route> 
+          <Route path="/game/:gameId" exact>
+            <CADGame games={games} />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
 
-                </Switch>
-              </div>
+        </Switch>
       </div>
     </AuthContext.Provider>      
   );

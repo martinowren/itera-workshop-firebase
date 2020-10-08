@@ -13,7 +13,9 @@ export const WhiteCard: FC<WhiteCardProps> = ({cardId, button, showCard}) => {
     if (card) {
         if (showCard) {
             return <div className='white-card'>
-                {card.content}
+                <div className='white-card__content'>
+                    {card.content}
+                </div>
 
                 { button }
             </div>

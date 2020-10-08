@@ -1,43 +1,17 @@
-.ob-button {
-    text-align: center;
-    margin-right: 12px;
-    color: $blackColor;
-    background-color: transparent;
-    font-size: $mediumFont;
-    font-family: 'ApexNew-Bold';
-    text-transform: uppercase;
-    padding: 1.5vh 3vw 1vh;
-    border: solid 1px $mainColor;
+.button {
+    color: white;
+    font-size: 16px;
+    padding: 8px;
+    background-color: #d24e3e;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+
     &:hover {
-        cursor: pointer;
-        color: $mainColor;
+        background-color: #AD4033;
     }
     &:disabled {
         cursor: initial;
-        background-color: lighten($lightGreyColor, 10%);
-        border-color: $blackColor;
-        color: $blackColor;
-        &:hover {
-            color: $blackColor;
-        }
+        opacity: 0.7;
     }
-    
-    &--active-disabled {
-        button {
-            &:disabled {
-                background-color: transparent;
-                color: $blueColor;
-                &:hover {
-                    color: $blueColor;
-                }
-            }
-        }
-    }
-
-    &--size-small {
-        padding: 0.75vh 1.5vw 0.5vh;
-        font-size: $smallFont;
-        margin-bottom: 0;
-    }
-
 }
