@@ -1,28 +1,32 @@
 export type GameID = string;
-export type Username = string;
 export type DeckID = string;
 export type CardID = number;
+
+export interface Player {
+    uid: GameID;
+    displayName: string | null
+}
 
 export interface Game {
     id: GameID;
     name: string;
-    owner: Username;
-    winner?: Username;
-    players: Username[];
+    owner: Player;
+    winner?: Player;
+    players: Player[];
     rounds: Round[];
 }
 
 export interface Round {
     id: string;
-    cardTsar: Username;
+    cardTsar: Player;
     blackCard: CardID;
     turns: Turn[];
     showCards: boolean;
-    winner: Username | null;
+    winner: Player | null;
 }
 
 export interface Turn {
-    username: Username;
+    username: Player;
     card: CardID;
 }
 

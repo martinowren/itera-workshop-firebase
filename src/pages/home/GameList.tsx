@@ -3,7 +3,6 @@ import { updateGame } from '../../game/game.service';
 import { Game, GameID } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useHistory } from 'react-router';
-import { getScore } from '../cards-agains-developers-game/helpers';
 
 export interface GameListProps {
     games: Game[];
@@ -16,13 +15,17 @@ const GameList: FC<GameListProps> = ({games}) => {
     const joinGame = async (gameId: GameID) => {
         const game = games.find(g => g.id === gameId) as Game;
         try {
-            if (authContext.user && authContext.user.email) {
+            if (authContext.user && authContext.user.uid) {
+                let uniquePlayers = game.players;
+                if(!game.players.some(elem => elem.uid === authContext.user?.uid)) {
+                    uniquePlayers.push({uid: authContext.user.uid, displayName: authContext.user.displayName});
+                }
                 await updateGame(gameId, {
-                    players: Array.from(new Set([...game.players, authContext.user.email]))
+                    players: uniquePlayers
                 });
                 history.push(`/game/${gameId}`);
             } else {
-                throw new Error("email for user is not available!")
+                throw new Error("uid for user is not available!")
             }
         } catch (e) {
             console.error(e);
@@ -35,9 +38,9 @@ const GameList: FC<GameListProps> = ({games}) => {
                 return (
                     <li className='game-list__item' key={game.id}>
                         <h4>{game.name}</h4>
-                        <div>Owner: {game.owner}</div>
+                        <div>Owner: {game.owner.displayName}</div>
                         <div>Joined players: {game.players.length}</div>
-                        <div>Winner: {game.winner}</div>
+                        <div>Winner: {game.winner?.displayName}</div>
                         <button onClick={() => joinGame(game.id)}>Join Game</button>
                     </li>
                 )

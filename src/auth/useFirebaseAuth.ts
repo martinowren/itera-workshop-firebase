@@ -3,17 +3,24 @@ import firebase from 'firebase';
 
 import { AuthContextType, initialAuthContext } from './AuthContext';
 
-var provider = new firebase.auth.GithubAuthProvider();
+// var provider = new firebase.auth.GithubAuthProvider();
 
 
 function useFirebaseAuth() {
     const [authContext, setAuthContext] = useState<AuthContextType>(initialAuthContext);
 
-    const login = useCallback(async () => {
+    const login = useCallback(async (username) => {
         let authResult: firebase.auth.UserCredential;
         
         try {
-            authResult = await firebase.auth().signInWithPopup(provider);
+            authResult = await firebase.auth().signInAnonymously();
+            var user = firebase.auth().currentUser;
+
+            if (user !== null) {
+                await user.updateProfile({
+                    displayName: username,
+                });
+            }
 
             setAuthContext(state => 
                 Object.assign({}, state, { 

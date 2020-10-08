@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { Game, GameID, CardID, Card, Username, Turn } from '../../types';
+import { Game, GameID, CardID, Card, Player } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useRealtimeRounds } from '../../game/useRealtimeRounds';
 import { addRound, updateRound, updateGame } from '../../game/game.service';
@@ -50,11 +50,11 @@ export const CADGame: FC<GameProps> = ({games}) => {
      * Start the game by adding the first round to the rounds collection on the game document.
      */
     const startGame = () => {
-        if (params.gameId && authContext.user && authContext.user.email) {
+        if (params.gameId && authContext.user && authContext.user.uid) {
             const blackCard = drawBlackCard(rounds);
             addRound(params.gameId, {
                 blackCard: blackCard.id,
-                cardTsar: authContext.user.email,
+                cardTsar: {uid: authContext.user.uid, displayName: authContext.user.displayName},
                 turns: [],
                 showCards: false,
                 winner: null,
@@ -88,7 +88,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
     const playCard = (cardId: CardID) => {
         if (params.gameId && currentRound && authContext.user) {
             updateRound(params.gameId, currentRound.id, {
-                turns: [...currentRound.turns, { username: authContext.user.email as Username, card: cardId}]
+                turns: [...currentRound.turns, { username: authContext.user as Player, card: cardId}]
             }).then(() => {
                 setCardsOnHand(currentHand => currentHand.filter(c => c.id !== cardId));
             })
@@ -105,17 +105,17 @@ export const CADGame: FC<GameProps> = ({games}) => {
         }
     }
 
-    const declareWinner = async (username: Username) => {
+    const declareWinner = async (player: Player) => {
         if (params.gameId && currentRound && authContext.user) {
             try {
                 await updateRound(params.gameId, currentRound.id, {
-                    winner: username,
+                    winner: player,
                 });
-                const newScore = getScore(rounds, { [username]: 1 });
+                const newScore = getScore(rounds, { [player.uid]: 1 });
                 const winnerOfTheGame = getWinnerOfTheGameIfAny(newScore, WINNING_SCORE);
                 if (winnerOfTheGame) {
                     await updateGame(params.gameId, {
-                        winner: username,
+                        winner: player,
                     });
                 } else {
                     const blackCard = drawBlackCard(rounds);
@@ -156,7 +156,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
                 </div>
                 <div className='table__controlls'>
                     <div>
-                        { currentRound ? `Card tzar: ${currentRound.cardTsar}` : '' }
+                        { currentRound ? `Card tzar: ${currentRound.cardTsar.displayName}` : '' }
                     </div>
                     { showStartGameButton && (
                         <Button onClick={() => startGame()}>Start game</Button>
@@ -170,7 +170,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
                     <div className='table__players__container'>
                         { currentRound && game.players.map(player => (
                             <PlayerCard 
-                                key={player}
+                                key={player.uid}
                                 score={score}
                                 currentRound={currentRound}
                                 playerIsCardTsar={playerIsCardTsar}
@@ -193,7 +193,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
                 <Modal
                     setModalOpen={setModalOpen}
                 >
-                    <p>{game.winner} won the game!</p>
+                    <p>{game.winner.displayName} won the game!</p>
                     <Link to='/'>Exit game</Link>
                 </Modal>
             }

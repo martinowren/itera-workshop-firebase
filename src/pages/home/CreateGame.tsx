@@ -10,14 +10,14 @@ const CreateGame: FC = () => {
 
     const createGame = () => {
         try {
-            if (authContext.user && authContext.user.email) {
+            if (authContext.user && authContext.user.uid) {
                 addGame({
                     name: gameName,
-                    owner: authContext.user.email,
+                    owner: {uid: authContext.user.uid, displayName: authContext.user.displayName},
                     players: [],
                 });
             } else {
-                throw new Error("email for user is not available!");
+                throw new Error("uid for user is not available!");
             }
         } catch (e) {
             console.error(e);
