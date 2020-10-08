@@ -26,7 +26,7 @@ export interface Round {
 }
 
 export interface Turn {
-    username: Player;
+    player: Player;
     card: CardID;
 }
 

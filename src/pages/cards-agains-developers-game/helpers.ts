@@ -21,7 +21,7 @@ export function userIsCardTsar(currentRound: Round, authContext: AuthContextType
 
 export function allHaveSubmittedAWhiteCard(cardTsar: Player, players: Player[], turns: Turn[]) {
     const playersWhoNeedToSubmitACard = players.filter(username => username !== cardTsar);
-    return playersWhoNeedToSubmitACard.find((username: Player) => !turns.map(t => t.username).includes(username)) === undefined;
+    return playersWhoNeedToSubmitACard.find((submitter: Player) => !turns.map(t => t.player).includes(submitter)) === undefined;
 }
 
 
@@ -56,7 +56,7 @@ export function getWinnerOfTheGameIfAny(score: Record<string, number>, pointsToW
 
 export function haveSubmittedACardThisRound(currentRound: Round, authContext: AuthContextType) {
     if (authContext.user && authContext.user.uid) {
-        return currentRound.turns.map(t => t.username.uid).includes(authContext.user.uid); 
+        return currentRound.turns.map(t => t.player.uid).includes(authContext.user.uid); 
     }
     return false;
 }

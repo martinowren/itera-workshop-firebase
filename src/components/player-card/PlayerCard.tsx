@@ -12,7 +12,7 @@ interface PlayerCardProps {
 }
 
 export const PlayerCard: FC<PlayerCardProps> = ({score, currentRound, playerIsCardTsar, declareWinner, player}) => {
-    const playerTurn = currentRound.turns.find(t => t.username.uid === player.uid);
+    const playerTurn = currentRound.turns.find(t => t.player.uid === player.uid);
     const playerScore = score[player.uid] || 0;
     return (
        <div className='player'>

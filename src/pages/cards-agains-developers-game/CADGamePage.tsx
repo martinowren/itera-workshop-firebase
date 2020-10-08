@@ -88,7 +88,7 @@ export const CADGame: FC<GameProps> = ({games}) => {
     const playCard = (cardId: CardID) => {
         if (params.gameId && currentRound && authContext.user) {
             updateRound(params.gameId, currentRound.id, {
-                turns: [...currentRound.turns, { username: authContext.user as Player, card: cardId}]
+                turns: [...currentRound.turns, { player: {uid: authContext.user.uid, displayName: authContext.user.displayName}, card: cardId}]
             }).then(() => {
                 setCardsOnHand(currentHand => currentHand.filter(c => c.id !== cardId));
             })
