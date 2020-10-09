@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { Game, GameID, Round } from '../../src/types';
+import { Game, GameID, Round } from '../types';
 
 /**
  * CRUD for game documents

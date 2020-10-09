@@ -55,7 +55,8 @@ We have seperated the course into multiple parts, each part has its own Readme f
 - CRUD operations and realtime updates
 
 **Part 3 goals:**
-- Add authentication and secure your application. 
+- Add authentication, secure your application
+- Host your game on Firebase hosting
 
 **Completed all the parts and eager for more? 💪**
 Extra work for those who needs additional challenges: 
