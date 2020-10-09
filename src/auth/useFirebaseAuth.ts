@@ -21,8 +21,9 @@ function useFirebaseAuth() {
         await user.updateProfile({
           displayName: username,
         });
+        console.log("Logged in with: " + user.displayName);
       }
-
+      
       setAuthContext((state) =>
         Object.assign({}, state, {
           user: authResult.user,

@@ -61,7 +61,7 @@ const GameList: FC<GameListProps> = ({ games }) => {
                     {game.name}
                   </Typography>
                   <Typography variant="body2" component="p">
-                    {game.players.length} joined players
+                    {game.players?.length ?? 0} joined players
                   </Typography>
                   <Box pt={2}>
                     <strong>

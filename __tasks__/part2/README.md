@@ -1,13 +1,19 @@
 # Part 2: CRUD operations and real time updates
 
 ## Task 1: CRUD operations for the game object
-In part 1 we did retreive the list of all games from our Cloud Firestore. In this task however we will implement CRUD operations on the game object, that is Add, Get, Update and Delete operations. 
+In part 1 we retreived the list of all games from our Cloud Firestore. In this task however we will implement CRUD operations on the game object, that is Add, Get, Update and Delete operations. 
+
+❓ Do you know what CRUD operations are and what each letter in the Acronym stands for?
 
 1. Head to the file `src/game/game.service.ts` where we will create all our CRUD Operations. We have already created the template functions for you. 
-2. Edit the "addGame" function to add the provided game and return the result. 
-3. Edit the "getGame" function to get the information of a specific game document and return the result. 
-4. Edit the "updateGame" function to update the game with the provided game data. 
-5. Edit the "deleteGame" function to delete a game in the Cloud Firestore with the specific Id. 
+2. Edit the "addGame" function to add the provided game and return the result.
+3. Verify the "addGame" function by trying to create a new game in the app. 
+
+❓ Did it appear in the list? No? Maybe check if it is stored in the Cloud Firestore database by checking the Firebase Console. How could it be that is not being shown in the list but it works on the database? Try a refresh of the page 🤔 
+
+4. Edit the "getGame" function to get the information of a specific game document and return the result. 
+5. Edit the "updateGame" function to update the game with the provided game data. 
+6. Edit the "deleteGame" function to delete a game in the Cloud Firestore with the specific Id. 
 
 👉 Tip: The Id field of the game object is the actual Id for the document in the Cloud Firestore DB. This means you get easily reference it in calls such as `db.collection("games).doc(GameId)`.
 
