@@ -1,14 +1,12 @@
 import React, { FC } from 'react';
 import { Switch, Route } from "react-router-dom";
-
 import { useRealtimeGames } from './game/useRealtimeGames';
 import useFirebaseAuth from './auth/useFirebaseAuth';
 import { AuthContext } from './auth/AuthContext';
 import { HomePage, CADGame, LoginPage } from './pages';
 
-const App: FC = () => {  
+const App: FC = () => {
   const authContext = useFirebaseAuth();
-  console.log(authContext)
   const games = useRealtimeGames();
   
   return (
