@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.scss';
 
-// ❔ Initialize firebase
-import './__solution__/init';
+// Initialize firebase
+import './firebase';
 
 import App from './App';
 
