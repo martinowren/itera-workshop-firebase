@@ -1,27 +1,27 @@
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $light;
+  padding: 100px;
+  border-radius: 4px;
+  font-size: 21px;
+  z-index: 10;
+
+  &__button {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: $cream;
-    padding: 100px;
-    border-radius: 4px;
-    font-size: 21px;
-    z-index: 10;
+    top: 40px;
+    right: 40px;
+  }
 
-    &__button {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-    }
-
-    &__backdrop {
-        background-color: black;
-        opacity: 0.5;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0; 
-    }
+  &__backdrop {
+    background-color: black;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
