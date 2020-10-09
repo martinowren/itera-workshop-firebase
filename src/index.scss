@@ -3,8 +3,8 @@ $blackColor: #424041;
 $lightGreyColor: #c2c0c3;
 $blueColor: #4fc3e7;
 
-$brown: #3b332c;
-$cream: #fcf9f1;
+$dark: #212121;
+$light: #eeeeee;
 
 $mediumFont: calc(10px + 2vmin);
 $smallFont: calc(10px + 1vmin);
@@ -21,7 +21,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $cream;
+  background-color: $light;
 }
 
 .app {

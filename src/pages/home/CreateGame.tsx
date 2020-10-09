@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react';
-import { addGame } from '../../game/game.service';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
-import { TextInput } from '../../components/text-input/TextInput';
+import { addGame } from '../../game/game.service';
 import { useAuth } from '../../auth/AuthContext';
 
 const CreateGame: FC = () => {
@@ -28,14 +30,20 @@ const CreateGame: FC = () => {
   };
 
   return (
-    <div>
-      <TextInput
-        value={gameName}
-        onChange={(e) => setGameName(e.target.value)}
-        label="Game name"
-      />
-      <button onClick={() => createGame()}>New Game</button>
-    </div>
+    <Box display="flex" flexDirection="row" mb={2}>
+      <Box flexGrow={1} mr={1}>
+        <TextField
+          value={gameName}
+          fullWidth
+          variant="outlined"
+          onChange={(e) => setGameName(e.target.value)}
+          label="Choose a name"
+        />
+      </Box>
+      <Button variant="contained" color="primary" onClick={() => createGame()}>
+        New Game
+      </Button>
+    </Box>
   );
 };
 
