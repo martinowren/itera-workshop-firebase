@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
 import { useRealtimeGames } from './game/useRealtimeGames';
 import useFirebaseAuth from './auth/useFirebaseAuth';
 import { AuthContext } from './auth/AuthContext';
@@ -18,7 +17,6 @@ const theme = createMuiTheme({
 
 const App: FC = () => {
   const authContext = useFirebaseAuth();
-  console.log(authContext);
   const games = useRealtimeGames();
 
   return (
