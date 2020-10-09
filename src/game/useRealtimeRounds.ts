@@ -10,7 +10,7 @@ export function useRealtimeRounds(
 
   useEffect(() => {
     if (gameId) {
-      // Add your code here for part 2 task 5
+      // Add your code here for part 2 task 4
     }
   }, [gameId]);
 

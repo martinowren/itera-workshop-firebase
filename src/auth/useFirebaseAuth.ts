@@ -3,8 +3,6 @@ import firebase from 'firebase';
 
 import { AuthContextType, initialAuthContext } from './AuthContext';
 
-// var provider = new firebase.auth.GithubAuthProvider();
-
 function useFirebaseAuth() {
   const [authContext, setAuthContext] = useState<AuthContextType>(
     initialAuthContext
@@ -14,7 +12,11 @@ function useFirebaseAuth() {
     let authResult: firebase.auth.UserCredential;
 
     try {
+      // Change code here for Part 3 task 1
       authResult = await firebase.auth().signInAnonymously();
+
+      
+      // No need to go further change above.
       var user = firebase.auth().currentUser;
 
       if (user !== null) {
