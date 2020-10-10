@@ -3,14 +3,14 @@ import firebase from 'firebase';
 
 export type AuthContextType = {
   user: firebase.User | null;
-  isLoggedIn?: boolean;
+  isLoggedIn: boolean;
   login?: (username: string) => Promise<void>;
   logout?: () => Promise<void>;
 };
 
 export const initialAuthContext: AuthContextType = {
   user: null,
-  isLoggedIn: undefined,
+  isLoggedIn: false,
   login: undefined,
   logout: undefined,
 };
