@@ -28,11 +28,11 @@ export function allHaveSubmittedAWhiteCard(
   turns: Turn[]
 ) {
   const playersWhoNeedToSubmitACard = players.filter(
-    (username) => username !== cardTsar
+    (player) => player.uid !== cardTsar.uid
   );
   return (
     playersWhoNeedToSubmitACard.find(
-      (submitter: Player) => !turns.map((t) => t.player).includes(submitter)
+      (submitter: Player) => !turns.map((t) => t.player.uid).includes(submitter.uid)
     ) === undefined
   );
 }
