@@ -20,13 +20,29 @@ So far we have Anonymous sign in method configured. We would like to change this
 
 
 ## Task 2: Secure your Cloud Firestore and data
-TODO: Add some details here Didrik?
+
+❓ Remember in part 1 that we we started our Cloud Firestore database in test mode? Who can read our database now and what consequences may it have?
+
+Hopefully you had some ideas on the issues with our current security rules. They simply allow all calls to our database without any authentication. Let's fix it in this task.
+
+1. Go to the [Firebase console](https://console.firebase.google.com/?authuser=0) again and select the Cloud Firestore and then the rules tab. 
+2. Change the rules to only allow authenticated users to make changes. See the [official documentation](https://firebase.google.com/docs/firestore/security/get-started#writing_rules) for some inspiration 💡 
 
 ## Task 3: Host the application on the cloud ☁️ 
-TODO: Add some better descriptions
+With our app fairly secure we can start thinking about deploying it to the world wide web so that we can game with our remote friends 👭 👬 Firebase hosting is perfect for this. Remember you can read the [official docs](https://firebase.google.com/docs/hosting) for more information on how Firebase Hosting works. 
 
-1. Initate Firebase on the project. Use build as path for the source code. 
-2. build the project
-3. Run deploy command
+1. First we want to initate Firebase on the project. We need to have the Firebase CLI installed first. We can install it with NPM by using the following command in a terminal `npm install -g firebase-tools`.
+2. Login to your firebase account with `firebase login` so that Firebase CLI can retreive information from your project.
+3. Now we can initiate our project. Navigate to the root folder of the git repository and use the command `firebase init hosting`. 
+- Select "use an existing project" and choose the project you made for this course. 
+- For what public directory to use write in `build` this is the path our app will use when building the source files.
+- We also want to configure it as a single-page app since we are using React. Write in `yes` when you are asked.
+- If you get question on overwriting index.html you can write in `no`. We will anyway build our files again.
+4. If you went through the Firebase init process sucessfully the Firebase CLI should have created two files for you. One firebase.json and the other .firebaserc. Take a look at the files and see if you can understand what they configure. See the [firebase.json documentation](https://firebase.google.com/docs/cli#the_firebasejson_file) and [.firebaserc documentation](https://firebase.google.com/docs/cli#project_aliases) for more information. 
+5. Next up is running the build command so that we make a production ready folder with all our latest changes. You can do this by running `npm run build`.
+3. The final step is to deploy our awesome application to Firebase Hosting. `Run firebase deploy --only hosting`. 
 
-See https://firebase.google.com/docs/hosting/quickstart for detailed steps. 
+You have made it! You should now have a fully working Cards Againsts Developers app running and being served from Firebase 🏆  🎉 .  Check out your application on the url `PROJECT_ID.firebaseapp.com` and share it with your friends.
+
+## Final note
+Remember to clean up and delete your project if you are not going to use it any more. There should be no runnings costs with a free account, but its good to clear our app in case of security issues 😊 
