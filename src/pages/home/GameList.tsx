@@ -1,16 +1,19 @@
-import React, { FC } from 'react';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import React, { FC, useState } from 'react';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Grid,
+  TextField,
+} from '@material-ui/core';
 
 import { updateGame } from '../../game/game.service';
 import { Game, GameID } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useHistory } from 'react-router';
+import GameListEntry from './GameListEntry';
 
 export interface GameListProps {
   games: Game[];
@@ -19,6 +22,13 @@ export interface GameListProps {
 const GameList: FC<GameListProps> = ({ games }) => {
   const authContext = useAuth();
   const history = useHistory();
+  const [editGameId, setEditGameId] = useState<string>();
+  const [newGameName, setNewGameName] = useState<string>();
+
+  const handleCloseDialog = () => {
+    setEditGameId(undefined);
+    setNewGameName(undefined);
+  };
 
   const joinGame = async (gameId: GameID) => {
     const game = games.find((g) => g.id === gameId) as Game;
@@ -43,45 +53,55 @@ const GameList: FC<GameListProps> = ({ games }) => {
     }
   };
 
+  const updateGameName = async () => {
+    try {
+      if (editGameId) {
+        await updateGame(editGameId, { name: newGameName });
+        handleCloseDialog();
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
-    <Grid container spacing={3}>
-      {games.map((game) => {
-        const hasStarted =
-          game.rounds !== undefined && game.rounds.length !== 0;
-        const hasWinner = game.winner?.displayName !== undefined;
-        return (
-          <Grid item key={game.id} xs={3}>
-            <Card>
-              <Box p={1} justifyContent="center">
-                <CardContent>
-                  <Typography color="textSecondary" gutterBottom>
-                    Owner: {game.owner.displayName}
-                  </Typography>
-                  <Typography variant="h5" component="h2">
-                    {game.name}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                    {game.players?.length ?? 0} joined players
-                  </Typography>
-                  <Box pt={2}>
-                    <strong>
-                      {hasWinner
-                        ? game.winner?.displayName + 'is the winner!'
-                        : hasStarted
-                        ? 'Game in progress'
-                        : ''}
-                    </strong>
-                  </Box>
-                </CardContent>
-                <CardActions>
-                  <Button onClick={() => joinGame(game.id)}>Join</Button>
-                </CardActions>
-              </Box>
-            </Card>
-          </Grid>
-        );
-      })}
-    </Grid>
+    <>
+      <Grid container spacing={3}>
+        {games.map((game) => (
+          <GameListEntry
+            key={game.id}
+            game={game}
+            setEditGameId={setEditGameId}
+            joinGame={joinGame}
+          />
+        ))}
+      </Grid>
+      <Dialog
+        open={editGameId !== undefined}
+        onClose={handleCloseDialog}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogContent>
+          <DialogContentText>Change the name of your game.</DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            fullWidth
+            onChange={(e) => setNewGameName(e.currentTarget.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={updateGameName} color="primary">
+            Change
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 
