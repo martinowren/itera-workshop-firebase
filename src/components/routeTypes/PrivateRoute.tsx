@@ -10,6 +10,7 @@ export interface PrivateRouteProps extends RouteProps {
 const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
   authenticated,
+  games,
   ...rest
 }) => {
   if (!Component) return null;
@@ -18,7 +19,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
       {...rest}
       render={(props: any) =>
         authenticated ? (
-          <Component {...props} />
+          <Component games={games} {...props} />
         ) : (
           <Redirect
             to={{ pathname: '/login', state: { from: props.location } }}

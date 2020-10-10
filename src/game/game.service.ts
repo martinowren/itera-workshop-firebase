@@ -42,7 +42,9 @@ export function updateRound(
   roundData: Partial<Round>
 ) {
   // Replace the current return and add your code here for part 2 task 1
-  return new Promise((success) => { success([]); })
+  return new Promise((success) => {
+    success([]);
+  });
 }
 
 // 🔥 Implement transaction for updating rounds

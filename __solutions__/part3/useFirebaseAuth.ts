@@ -12,10 +12,9 @@ function useFirebaseAuth() {
     let authResult: firebase.auth.UserCredential;
 
     try {
-      const provider = new firebase.auth.GithubAuthProvider(); 
+      const provider = new firebase.auth.GithubAuthProvider();
       authResult = await firebase.auth().signInWithPopup(provider);
 
-      
       // No need to go further change above.
       var user = firebase.auth().currentUser;
 
@@ -23,9 +22,9 @@ function useFirebaseAuth() {
         await user.updateProfile({
           displayName: username,
         });
-        console.log("Logged in with: " + user.displayName);
+        console.log('Logged in with: ' + user.displayName);
       }
-      
+
       setAuthContext((state) =>
         Object.assign({}, state, {
           user: authResult.user,

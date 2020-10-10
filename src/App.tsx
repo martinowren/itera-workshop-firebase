@@ -29,15 +29,15 @@ const App: FC = () => {
             <PrivateRoute
               path="/game/:gameId"
               authenticated={authContext.isLoggedIn}
-              games = {games}
-              component = {CADGame}
+              games={games}
+              component={CADGame}
             />
             <PrivateRoute
               exact
               path="/"
               authenticated={authContext.isLoggedIn}
-              games = {games}
-              component = {HomePage}
+              games={games}
+              component={HomePage}
             />
             <PublicRoute
               path="/login"
