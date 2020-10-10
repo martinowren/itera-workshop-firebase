@@ -40,9 +40,9 @@ With our app fairly secure we can start thinking about deploying it to the world
 - If you get question on overwriting index.html you can write in `no`. We will anyway build our files again.
 4. If you went through the Firebase init process sucessfully the Firebase CLI should have created two files for you. One firebase.json and the other .firebaserc. Take a look at the files and see if you can understand what they configure. See the [firebase.json documentation](https://firebase.google.com/docs/cli#the_firebasejson_file) and [.firebaserc documentation](https://firebase.google.com/docs/cli#project_aliases) for more information. 
 5. Next up is running the build command so that we make a production ready folder with all our latest changes. You can do this by running `npm run build`.
-3. The final step is to deploy our awesome application to Firebase Hosting. `Run firebase deploy --only hosting`. 
+3. The final step is to deploy our awesome application to Firebase Hosting. Run `firebase deploy --only hosting` to deploy it. 
 
-You have made it! You should now have a fully working Cards Againsts Developers app running and being served from Firebase 🏆  🎉 .  Check out your application on the url `PROJECT_ID.firebaseapp.com` and share it with your friends.
+You have made it! You should now have a fully working Cards Againsts Developers app running and being served from Firebase 🏆  🎉 .  Check out your application on the url `PROJECT_ID.firebaseapp.com` and share it with your friends!
 
 ## Final note
 Remember to clean up and delete your project if you are not going to use it any more. There should be no runnings costs with a free account, but its good to clear our app in case of security issues 😊 
