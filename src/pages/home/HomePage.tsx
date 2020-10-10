@@ -10,9 +10,14 @@ export interface HomePageProps {
 export const HomePage: FC<HomePageProps> = ({ games }) => {
   return (
     <div className="home">
+      <h1>Cards Against Developers!</h1>
       <CreateGame />
 
-      <GameList games={games} />
+      {games?.length > 0 ? (
+        <GameList games={games} />
+      ) : (
+        <p> There are no active games. Try creating a new one!</p>
+      )}
     </div>
   );
 };

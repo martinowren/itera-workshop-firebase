@@ -37,7 +37,7 @@ const CreateGame: FC = () => {
           fullWidth
           variant="outlined"
           onChange={(e) => setGameName(e.target.value)}
-          label="Choose a name"
+          label="Choose a name for your game"
         />
       </Box>
       <Button variant="contained" color="primary" onClick={() => createGame()}>
