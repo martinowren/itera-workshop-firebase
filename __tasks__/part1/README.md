@@ -23,7 +23,7 @@ To make things a bit easier for you we have made some parts of the authenticatio
 We now want to setup our database that we will use for the web application.
 
 1. Navigate to the "Cloud Firestore" selection in the left toolbar of the Firebase console](https://console.firebase.google.com/?authuser=0). This is type of database we will create for our solution.
-2. Click the "Create database" button and choose the `start in production mode` secure rules for your cloud firestore. Since we already have Anonymous sign-in method we can activate some basic security. We will alter the rules somewhat in part 3.
+2. Click the "Create database" button and choose the `Start in test mode` secure rules for your cloud firestore. This will allow all operations with a timed rule. We will alter the rules in part 3 to make it more secure.
 3. Select any location you want your data will be stored, we reccomend `eur3 (europe-west)`. 
 3. You should now see a view with that visualizes your very own database in Cloud firestore. 
 
@@ -67,4 +67,4 @@ Also, the document we retreive from Firebase includes many more fields that we a
 
 👉 **Tip:** Since we are using Typescript in the project and it requires types, we need to set the type of list like `const games: Game[] = []`.
 
-👉 **Tip:**  If you are stuck you can either ask any of the helpers from Itera or use the example solution file in path: `__solutions__/part1/useRealtimeGames.ts`.
+👉 **Tip:**  Are you stuck? Did you remember to set the testing secure rules in firebase on task 3? You can alter it on the firebase console for firestore if needed. Remember you can always also ask any of the helpers from Itera or use the example solution file in path: `__solutions__/part1/useRealtimeGames.ts`.
