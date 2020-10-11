@@ -8,6 +8,13 @@ import { AuthContext } from './auth/AuthContext';
 import { HomePage, CADGame, LoginPage } from './pages';
 import PrivateRoute from './components/routeTypes/PrivateRoute';
 import PublicRoute from './components/routeTypes/PublicRoute';
+import {
+  AppBar,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,6 +31,20 @@ const App: FC = () => {
   return (
     <AuthContext.Provider value={authContext}>
       <ThemeProvider theme={theme}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography style={{ flexGrow: 1 }} variant="h6">
+              {authContext.isLoggedIn
+                ? authContext.user?.displayName
+                : 'Welcome!'}
+            </Typography>
+            {authContext.isLoggedIn && (
+              <Button color="inherit" onClick={authContext.logout}>
+                Logout
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
         <div className="app">
           <Switch>
             <PrivateRoute
