@@ -40,7 +40,7 @@ A database is nothing without any data, right? Let's fix that! In our web app we
 
 ![Example values for the first collection](https://i.ibb.co/P9w3vxn/Screenshot-2020-10-09-at-13-35-22.png)
 
-## Task 5: Connect the web app to your Firebase database
+## Task 5: Connect the web app to your Cloud Firestore database
 Finally, time to actually dig into some code! We'll now retrieve and configure the Firebase config so that we can communicate with our Cloud Firestore from our web app.
 
 1. First, we need to register a web app in Firebase Console. On the "Project Overview page" you can add a new app. Choose the "Web" option marked with "</>" and give it a name of your choosing. You can leave the "Firebase hosting" option unselected, we will configure hosting from the Firebase CLI in part 3. 
@@ -55,11 +55,11 @@ Finally, time to actually dig into some code! We'll now retrieve and configure t
 
 
 ## Task 6: Retrieve the games from Cloud Firestore
-We now have the connections up and running. 👊  Let's add functionality to get all the game documents from Firestore, including the one we created in task 4.
+We now have the connections up and running. 👊  Let's add functionality to get all the game documents from our Cloud Firestore, including the one we created in task 4.
 
 1. Navigate to the file `src/game/useRealtimeGames.ts`. This is where we'll add our logic.
 
-ℹ️ The `import firebase from 'firebase';` on the top of file references the Firestore npm package containing functionality we can use to get documents from our Cloud Firestore. 
+ℹ️ The `import firebase from 'firebase';` on the top of file references the Firebase npm package containing functionality we can use to get documents from our Cloud Firestore. 
 
 2. Implement a call to Firestore that gets the data of each game in the games collection and adds it to state using `setGames()`. See the [official documentation](https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection) for an example of how to do this.
 
