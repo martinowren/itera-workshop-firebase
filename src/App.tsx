@@ -11,7 +11,6 @@ import PublicRoute from './components/routeTypes/PublicRoute';
 import {
   AppBar,
   Button,
-  IconButton,
   Toolbar,
   Typography,
 } from '@material-ui/core';

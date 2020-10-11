@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+        function userIsAuthenticated() {
+            return request.auth.uid != null;
+        } 
+
+        match /games/{gameId} {
+            function gameIsValid() {
+                return request.resource.data.name is string &&
+                    request.resource.data.owner.uid is string &&
+                    request.resource.data.owner.displayName is string;
+            }
+
+            function userIsOwnerOfNewGame() {
+                return request.auth.uid == request.resource.data.owner.uid;
+            }
+
+            function userOwnesRequestedGame() {
+                return request.auth.uid == get(/databases/$(database)/documents/games/$(gameId)).data.owner.uid;
+            }
+
+            allow read, update: if userIsAuthenticated();
+            allow create: if userIsAuthenticated() && userIsOwnerOfNewGame() && gameIsValid();
+            allow delete: if userIsAuthenticated() && userOwnesRequestedGame();
+
+
+            match /rounds/{roundId} {
+                allow read, write: if userIsAuthenticated();
+            }
+        }
+    }
+}

@@ -27,6 +27,14 @@ The issue is that we now allow all calls to our database without any authenticat
 1. Go to the [Firebase console](https://console.firebase.google.com/?authuser=0) and to `Cloud Firestore > Rules` tab.
 2. Change the rules to only allow authenticated users to make changes. See the [official documentation](https://firebase.google.com/docs/firestore/security/get-started#writing_rules) for some inspiration 💡 
 
+🔥 Extra credit: 
+3. Write rules to only allow users to create games that they are the owner of.
+4. Write rules to only allow users to delete games that they own.
+5. Write rules to validate that new games contain a "name" field which is a string and an "owner" field which is a Map consisting of a "uid" and a "displayName" property, both of which are strings.
+
+👉 **Tip:** If you want to maintain your security rules from your source code repository you can run `firebase init firestore` which will add Firestore configuration to your firebase.json file.  The command will also create one file for your security rules and one file for your Firestore indexes. With Firestore initialized you can run `firebase deploy --only firestore:rules` to deploy your security rules to your Firestore instance in the cloud.
+
+
 ## Task 3: Host the application on the cloud ☁️ 
 With our app fairly secure, we can start thinking about deploying it to the world wide web and play with our friends remote 👭👬 Firebase Hosting makes this very simple!
 
