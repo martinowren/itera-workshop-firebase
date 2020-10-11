@@ -30,9 +30,9 @@ The issue is that we now allow all calls to our database without any authenticat
 ## Task 3: Host the application on the cloud ☁️ 
 With our app fairly secure, we can start thinking about deploying it to the world wide web and play with our friends remote 👭👬 Firebase Hosting makes this very simple!
 
-ℹ️ Read the [official documentation](https://firebase.google.com/docs/hosting) for more information on how Firebase Hosting works. 
+ℹ️ Read the [official documentation](https://firebase.google.com/docs/hosting) for more information on how Firebase Hosting works.
 
-1. First, we want to initialize Firebase on the project. We need to have the Firebase CLI installed first. Install it with npm using the following command in a terminal: `npm install -g firebase-tools`
+1. First, we want to initialize Firebase on the project. We need to have the Firebase CLI installed first. Install it with npm using the following command in a terminal: `npm install -g firebase-tools`. You might need to run this command with `sudo` since this command installs firebase tools globally on your computer.
    
 2. Login to your Firebase account with the command `firebase login` so that Firebase CLI can retrieve information from your project.
 
