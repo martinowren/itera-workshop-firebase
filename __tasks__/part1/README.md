@@ -54,20 +54,20 @@ Finally, time to actually dig into some code! We'll now retrieve and configure t
 👉 **Tip:** There is a Troubleshooting section at the bottom of this Readme with common errors and how to fix them.
 
 
-## Task 6: Retrieve the game from Cloud Firestore
-We now have the connections up and running. 👊  Next up is to actually retrieve the game document we configured in task 3.
+## Task 6: Retrieve the games from Cloud Firestore
+We now have the connections up and running. 👊  Let's add functionality to get all the game documents from Firestore, including the one we created in task 4.
 
-1. Navigate to the file `src/game/useRealtimeGames.ts`. This is where we will add the logic to retrieve the games.
+1. Navigate to the file `src/game/useRealtimeGames.ts`. This is where we'll add our logic.
 
-ℹ️ The `import firebase from 'firebase';` on the top of file references the Firestore npm package containing functionality we can use to retrieve documents from our Cloud Firestore. 
+ℹ️ The `import firebase from 'firebase';` on the top of file references the Firestore npm package containing functionality we can use to get documents from our Cloud Firestore. 
 
-2. Implement a call to Firestore that retrieves the content of the games collection and adds it to state using `setGames()`. See the [official documentation](https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection) for an example of how to do this.
+2. Implement a call to Firestore that gets the data of each game in the games collection and adds it to state using `setGames()`. See the [official documentation](https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection) for an example of how to do this.
 
-3. Starting the app again you should see the game you created. Well done! 👏 
+3. Starting the app again you should see the game you created in task 4. Well done! 👏 
 
 👉 **Tip:** We don't need the `where`-part of the example in the documentation, since we want to fetch all of the content. The first part of the code is therefore `firebase.firestore().collection('games').get()`.
 
-👉 **Tip:** The data we retrieve from Firebase includes many more fields that we are interested in, you can check this by using `console.log(doc)` within the code. We only need to set the id and data content like this: `const gameWithDocId = { id: doc.id , ...doc.data()} as Game;`.
+👉 **Tip:** The data we get from Firebase includes many more fields that we are interested in, you can check this by using `console.log(doc)` within the code. We only need to set the id and data content like this: `const gameWithDocId = { id: doc.id , ...doc.data()} as Game;`.
 
 👉 **Tip:** Since we are using Typescript in the project, we need to set the type of list like this: `const games: Game[] = []`.
 
