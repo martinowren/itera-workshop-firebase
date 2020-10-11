@@ -8,7 +8,17 @@ import { useAuth } from '../../auth/AuthContext';
 
 export const LoginPage = () => {
   const authContext = useAuth();
-  const [username, setUserName] = useState('');
+  const [username, setUserName] = useState<string>('');
+  const [validationError, setValidationError] = useState<boolean>(false);
+
+  const handleSubmit = () => {
+    if (!username) {
+      setValidationError(true);
+    } else if (authContext && authContext.login) {
+      authContext.login(username);
+    }
+  };
+
   return (
     <Container maxWidth="sm">
       <p>Create a user or sign in to start playing!</p>
@@ -19,18 +29,15 @@ export const LoginPage = () => {
             value={username}
             fullWidth
             variant="outlined"
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => {
+              setValidationError(false);
+              setUserName(e.target.value);
+            }}
+            error={validationError}
+            helperText={validationError ? 'Field cannot be empty' : ''}
           />
         </Box>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            if (authContext && authContext.login) {
-              authContext.login(username);
-            }
-          }}
-        >
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Login
         </Button>
       </Box>
