@@ -23,15 +23,10 @@ const blackCards: Card[] = [
   { content: 'I am using __________ for my monolith.', id: 1 },
   { content: 'I asked my boss for a raise due to __________.', id: 13 },
   { content: 'I declined the pull request because of __________.', id: 14 },
-  { content: 'I destroyed __________ by __________.', id: 15 },
   { content: "I don't get laid because of __________.", id: 16 },
   { content: "I don't get paid because of __________.", id: 17 },
   { content: "I don't need backups, I have __________.", id: 18 },
   { content: 'I filed a bug on __________.', id: 19 },
-  {
-    content: 'I had a problem with __________ and solved it by __________.',
-    id: 20,
-  },
   { content: 'I integrated __________ into my DevSecOps pipeline.', id: 21 },
   { content: 'I like to get drunk and __________.', id: 1 },
   { content: 'I like to turn up to investor meetings __________.', id: 22 },
@@ -45,11 +40,6 @@ const blackCards: Card[] = [
   { content: "My Cloud Drive won't sync because of __________.", id: 30 },
   { content: 'My alternative to the gym is __________.', id: 31 },
   { content: 'My co-worker files a complaint because of __________.', id: 32 },
-  {
-    content:
-      'My currently relationship status is __________ because of __________.',
-    id: 33,
-  },
   { content: 'My job feels like __________.', id: 34 },
   {
     content: 'My morning toilet session can be explained as __________.',
@@ -68,11 +58,6 @@ const blackCards: Card[] = [
   { content: 'The booth is themed __________.', id: 43 },
   { content: 'The customer requests __________.', id: 44 },
   { content: 'The difference between RSA and DSA is __________.', id: 45 },
-  {
-    content:
-      'The documentation says you should __________, but to make it work you need to __________.',
-    id: 46,
-  },
   {
     content: 'The new marketing campaign for April 1st will be __________.',
     id: 47,
