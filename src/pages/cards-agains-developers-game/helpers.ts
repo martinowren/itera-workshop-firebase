@@ -55,7 +55,9 @@ export function getScore(
 
 export function getNextCardTzar(players: Player[], currentCardTzar: Player) {
   const sortedPlayers = players.sort((a, b) => a.uid.localeCompare(b.uid));
-  const indexOfCurrentTzar = sortedPlayers.indexOf(currentCardTzar);
+  const indexOfCurrentTzar = sortedPlayers
+    .map((player) => player.uid)
+    .indexOf(currentCardTzar.uid);
   return sortedPlayers[(indexOfCurrentTzar + 1) % sortedPlayers.length];
 }
 
