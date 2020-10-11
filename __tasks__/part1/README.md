@@ -32,23 +32,22 @@ Now we want to set up our database.
 ## Task 4: Create your first game collection
 A database is nothing without any data, right? Let's fix that! In our web app we need to store different data collections such as games and rounds. We'll create a game collection manually to begin with. 📔
 
-1. Click the "Start collection" button on the Cloud Firestore console and set the `Collection ID` to be "games".
-2. Great! We can now create the first game as a document. You can use the "Auto-ID" button for the `Document ID`. 
-3. We want our game to have a name. Set the first field to "name" with type "string" and your chosen name. 
-4. A game also needs an owner. Add a field with name "owner" and type "map". The map should have two string fields named "displayName" and "uid". The `displayName` is the visual name of the owner, and the `uid` is their unique identifier. See picture below for example values.
-5. Save the document, view it in the console and verify that the fields are correct.
+1. Click the "Start collection" button on the Cloud Firestore console and set the `Collection ID` to be `games`.
+2. Great! We can now create the first game as a document. You can use the `Auto-ID` button for the `Document ID`. 
+3. We want our game to have a name. Set the first field to `name` with type `string` and your chosen name. 
+4. A game also needs an owner. Add a field with name `owner` and type `map`. The map should have two string fields named `displayName` and `uid`. The `displayName` is the visual name of the owner, and the `uid` is their unique identifier. See picture below for example values.
+5. Save the document, view it in the console and verify that the fields are set as expected.
 
 ![Example values for the first collection](https://i.ibb.co/P9w3vxn/Screenshot-2020-10-09-at-13-35-22.png)
 
-## Task 5: Connect the 
-to your Firebase database
-Finally, time to actually dig into some code! We'll now set up the Firebase config so that we can communicate with our Cloud Firestore from our web app.
+## Task 5: Connect the web app to your Firebase database
+Finally, time to actually dig into some code! We'll now retrieve and configure the Firebase config so that we can communicate with our Cloud Firestore from our web app.
 
-1. First, we need to create a web app config in Firebase. On the "Project Overview page" you can add a new app. Choose the "Web" option marked with "</>" and give it a name of your choosing. You can leave the "Firebase hosting" option unselected, we will configure hosting from the Firebase CLI in part 3. 
-2. On the next page we see some of the necessary scripts to connect Firebase to our web app. We are only interested in the `firebaseConfig` variable and initialization. Copy the variable contents. We have already included the script sources for you in the skeleton project. 
+1. First, we need to register a web app in Firebase Console. On the "Project Overview page" you can add a new app. Choose the "Web" option marked with "</>" and give it a name of your choosing. You can leave the "Firebase hosting" option unselected, we will configure hosting from the Firebase CLI in part 3. 
+2. On the next page you should see some of the necessary scripts to connect Firebase to our web app. We are only interested in the `firebaseConfig` variable. Copy the variable contents. The script sources and initializations are already configured in the web app. 
 4. Click "Continue to console". 
-5. Navigate to the file `src/firebase.ts` and update the config with the values given.
-6. Start up your project again with `npm run start`, try logging in with any username, and you should then be redirected to the home page. You can check the console output for any issues, there should be a message such as `Logged in with: <username>` to validate the login.
+5. Navigate to the file `src/firebase.ts` and update the config with the values of the `firebaseConfig` variable that you copied previusly.
+6. Start up the web app again with `npm run start`, try logging in with any username. Did it work? Hopefully you were redirected to the main game view and can see your username in the top of the web app.
 
 👉 **Tip:** If you forgot to copy the values for the `firebaseConfig`, you can also view them in the settings of your app in the [Firebase console](https://console.firebase.google.com/?authuser=0).
 
