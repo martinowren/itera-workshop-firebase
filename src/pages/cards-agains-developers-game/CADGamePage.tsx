@@ -79,7 +79,7 @@ export const CADGame: FC<GameProps> = ({ games }) => {
   useEffect(() => {
     if (currentRoundId) {
       setCardsOnHand((currentHand) => {
-        const newHand = currentHand ? [...currentHand] : [];
+        const newHand = [...currentHand];
         while (newHand.length < NUMBER_OF_CARDS_TO_HOLD) {
           newHand.push(drawWhiteCard(newHand.map((c) => c.id)));
         }
@@ -131,7 +131,7 @@ export const CADGame: FC<GameProps> = ({ games }) => {
           WINNING_SCORE
         );
         if (winnerOfTheGame) {
-          await updateGame(params.gameId, {
+          await updateGame(params.gameId, { // Only allowed by the owner? then we can have security rules on update, delete of games.
             winner: player,
           });
         } else {
@@ -150,7 +150,7 @@ export const CADGame: FC<GameProps> = ({ games }) => {
     }
   };
 
-  if (!game) return null; // move up?
+  if (!game) return null;
 
   const showCards = currentRound && currentRound.showCards;
   const showRevealCardsButton =

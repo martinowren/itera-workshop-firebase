@@ -21,16 +21,14 @@ export function getGame(id: GameID) {
 }
 
 export function updateGame(id: GameID, gameData: Partial<Game>) {
-  // if (!id) return Promise.reject('cannot get document without an id');
   return firebase.firestore().collection('games').doc(id).update(gameData);
 }
 
 export function deleteGame(id: GameID) {
-  // if (!id) return Promise.reject('cannot delete document without an id');
   return firebase.firestore().collection('games').doc(id).delete();
 }
 
-// 🔥 Implement transaction for updating the game such that consistency is maintained
+// 🔥 Implement transaction for updating the game to avoid conflicting updates
 export function updateGameTransaction(id: GameID, gameData: Partial<Game>) {}
 
 /**
@@ -62,4 +60,5 @@ export function updateRound(
     .update(roundData);
 }
 
-// 🔥 Implement transaction for updating rounds
+// 🔥 Implement transaction for updating rounds to avoid conflicting updates 
+export function updateRoundTransaction(id: GameID, gameData: Partial<Game>) {}

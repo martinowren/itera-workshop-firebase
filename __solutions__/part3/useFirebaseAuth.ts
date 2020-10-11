@@ -45,7 +45,6 @@ function useFirebaseAuth() {
         setAuthContext((state) =>
           Object.assign({}, state, {
             user: null,
-            userData: null,
             isLoggedIn: false,
           })
         );
