@@ -30,7 +30,6 @@ const GameListEntry: FC<GameListEntryProps> = ({
 }) => {
   const authContext = useAuth();
 
-  const hasStarted = game.rounds !== undefined && game.rounds.length !== 0;
   const hasWinner = game.winner?.displayName !== undefined;
   const isOwner = authContext.user?.uid === game.owner.uid;
 
@@ -45,7 +44,7 @@ const GameListEntry: FC<GameListEntryProps> = ({
 
   return (
     <Grid item xs={3}>
-      <Card>
+      <Card style={{ height: '100%' }}>
         <Box p={1} justifyContent="center">
           <CardHeader
             title={game.name}
@@ -73,18 +72,15 @@ const GameListEntry: FC<GameListEntryProps> = ({
             <Typography variant="body2" component="p">
               {game.players?.length ?? 0} joined players
             </Typography>
-            <Box pt={2}>
-              <strong>
-                {hasWinner
-                  ? game.winner?.displayName + 'is the winner!'
-                  : hasStarted
-                  ? 'Game in progress'
-                  : ''}
-              </strong>
-            </Box>
           </CardContent>
           <CardActions>
-            <Button onClick={() => joinGame(game.id)}>Join</Button>
+            <strong>
+              {hasWinner ? (
+                game.winner?.displayName + ' is the winner!'
+              ) : (
+                <Button onClick={() => joinGame(game.id)}>Join</Button>
+              )}
+            </strong>
           </CardActions>
         </Box>
       </Card>

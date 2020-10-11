@@ -31,7 +31,7 @@ export function updateGameTransaction(id: GameID, gameData: Partial<Game>) {}
 /**
  * CRUD for round documents
  */
-export function addRound(gameId: GameID, round: Omit<Round, 'id'>) {
+export function addRound(gameId: GameID, round: Omit<Round, 'id' | 'timestamp'>) {
   // Add your code here for part 2 task 2
   return null;
 }

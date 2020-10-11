@@ -23,6 +23,7 @@ export interface Round {
   turns: Turn[];
   showCards: boolean;
   winner: Player | null;
+  timestamp: string;
 }
 
 export interface Turn {

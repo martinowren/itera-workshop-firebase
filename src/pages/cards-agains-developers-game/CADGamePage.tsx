@@ -153,8 +153,6 @@ export const CADGame: FC<GameProps> = ({ games }) => {
   if (!game) return null; // move up?
 
   const showCards = currentRound && currentRound.showCards;
-  const showStartGameButton =
-    userOwnsGame(authContext, game) && gameHasNotStarted(rounds);
   const showRevealCardsButton =
     currentRound &&
     userIsCardTsar(currentRound, authContext) &&
@@ -182,9 +180,12 @@ export const CADGame: FC<GameProps> = ({ games }) => {
               ? `Card tzar: ${currentRound.cardTsar.displayName}`
               : ''}
           </div>
-          {showStartGameButton && (
-            <Button onClick={() => startGame()}>Start game</Button>
-          )}
+          {gameHasNotStarted(rounds) &&
+            (userOwnsGame(authContext, game) ? (
+              <Button onClick={() => startGame()}>Start game</Button>
+            ) : (
+              <p>Waiting for {game.owner.displayName} to start the game... </p>
+            ))}
           {showRevealCardsButton && (
             <Button onClick={() => revealCards()}>Reveal cards</Button>
           )}
