@@ -7,7 +7,7 @@ export function useRealtimeGames() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    // Add your code here for part 1 task 5
+    // Add your code here for part 1 task 6
   }, []);
 
   return games;
