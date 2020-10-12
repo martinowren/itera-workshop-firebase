@@ -36,9 +36,10 @@ A database is nothing without any data, right? Let's fix that! In our web app we
 2. Great! We can now create the first game as a document. You can use the `Auto-ID` button for the `Document ID`. 
 3. We want our game to have a name. Set the first field to `name` with type `string` and your chosen name. 
 4. A game also needs an owner. Add a field with name `owner` and type `map`. The map should have two string fields named `displayName` and `uid`. The `displayName` is the visual name of the owner, and the `uid` is their unique identifier. See picture below for example values.
-5. Save the document, view it in the console and verify that the fields are set as expected.
+5. Last thing we need to do is to create a variable to store the players in our game. This should have a field name `players` and type `array`. This array should initially be empty as there are no players in our game yet. 
+6. Save the document, view it in the console and verify that the fields are set as expected.
 
-![Example values for the first collection](https://i.ibb.co/P9w3vxn/Screenshot-2020-10-09-at-13-35-22.png)
+![Example values for the first collection](https://i.ibb.co/F3PXsjG/Screenshot-2020-10-12-at-13-06-12.png)
 
 ## Task 5: Connect the web app to your Cloud Firestore database
 Finally, time to actually dig into some code! We'll now retrieve and configure the Firebase config so that we can communicate with our Cloud Firestore from our web app.
