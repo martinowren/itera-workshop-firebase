@@ -59,7 +59,7 @@ We now have the connections up and running. 👊  Let's add functionality to get
 
 1. Navigate to the file `src/game/useRealtimeGames.ts`. This is where we'll add our logic.
 
-ℹ️ The `import firebase from 'firebase';` on the top of file references the Firebase npm package containing functionality we can use to get documents from our Cloud Firestore. 
+    ℹ️  The `import firebase from 'firebase';` on the top of file references the Firebase npm package containing functionality we can use to get documents from our Cloud Firestore. 
 
 2. Implement a call to Firestore that gets the data of each game in the games collection and adds it to state using `setGames()`. See the [official documentation](https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection) for an example of how to do this.
 
@@ -67,9 +67,9 @@ We now have the connections up and running. 👊  Let's add functionality to get
 
 👉 **Tip:** We don't need the `where`-part of the example in the documentation, since we want to fetch all of the content. The first part of the code is therefore `firebase.firestore().collection('games').get()`.
 
-👉 **Tip:** The data we get from Firebase includes many more fields that we are interested in, you can check this by using `console.log(doc)` within the code. We only need to set the id and data content like this: `const gameWithDocId = { id: doc.id , ...doc.data()} as Game;`.
-
 👉 **Tip:** Since we are using Typescript in the project, we need to set the type of list like this: `const games: Game[] = []`.
+
+👉 **Tip:** The data we get from Firebase includes many more fields that we are interested in, you can check this by using `console.log(doc)` within the code. We only need to set the id and data content like this: `const gameWithDocId = { id: doc.id , ...doc.data()} as Game;`.
 
 ## Troubleshooting
 
