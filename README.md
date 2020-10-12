@@ -58,6 +58,7 @@ The tasks are separated into three different parts. Each part has its own Readme
 - Host your game on Firebase hosting.
 
 **Completed all the parts and eager for more? 💪**
-Extra work for those who needs additional challenges: 
-- Frontend work
-- Avoid duplicated cards
+Extra work for those who needs additional challenges:
+- Try different Authentication providers and methods. See [documentation](https://firebase.google.com/docs/auth/web/start) for some guidance.
+- Look into Firebase Cloud Functions. Could there be some functionality in the web app that makes sense to move to functions? Starting a game and issuing cards to players could be one of them. More information on Cloud Functions in the [documentation](https://firebase.google.com/docs/functions)
+- Avoid duplicated cards. Currently players may receive duplicate cards in their Card stacks.
