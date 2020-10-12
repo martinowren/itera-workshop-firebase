@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@material-ui/core';
 
-import { updateGame } from '../../game/game.service';
+import { getGame, updateGame } from '../../game/game.service';
 import { Game, GameID } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useHistory } from 'react-router';
@@ -41,6 +41,8 @@ const GameList: FC<GameListProps> = ({ games }) => {
             displayName: authContext.user.displayName,
           });
         }
+        const gameRes = await getGame(gameId);
+        console.log('getGame response:', gameRes);
         await updateGame(gameId, {
           players: uniquePlayers,
         });

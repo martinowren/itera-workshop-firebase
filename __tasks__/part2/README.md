@@ -15,7 +15,7 @@ In part 1 we retrieved the list of all games from our Cloud Firestore. In this t
 
     👉 Tip: If you make a mistake, you can manually remove fields or documents in the Cloud Firestore.
 
-4. Implement the `getGame` function to get the information of a specific game document and return the result. This function is not currently used in the game, but you can verify your result using `console.log`.
+4. Implement the `getGame` function to get the information of a specific game document and return the result. This function is not currently used in the game, but you can verify your result by checking the output in the developer tools console after clicking "join" on a newly created game.
 
     👉 Tip: The id field of the game object is the actual id for the document in the Cloud Firestore. This means you can easily reference a specific game like this: `db.collection('games').doc(id)`.
 

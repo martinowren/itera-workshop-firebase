@@ -27,7 +27,7 @@ The issue is that we now allow all calls to our database without any authenticat
 1. Go to the [Firebase console](https://console.firebase.google.com/?authuser=0) and to `Cloud Firestore > Rules` tab.
 2. Change the rules to only allow authenticated users to make changes. See the [official documentation](https://firebase.google.com/docs/firestore/security/get-started#writing_rules) for some inspiration 💡 
 
-🔥 Extra credit:
+    🔥 Extra credit:
 
 3. Write rules to only allow users to create games that they are the owner of.
 
