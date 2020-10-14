@@ -1,11 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-
+import { useParams, useHistory } from 'react-router';
 import { Game, GameID, CardID, Card, Player } from '../../types';
 import { useAuth } from '../../auth/AuthContext';
 import { useRealtimeRounds } from '../../game/useRealtimeRounds';
 import { addRound, updateRound, updateGame } from '../../game/game.service';
-
+import {Button as MaterialButton} from '@material-ui/core';
 import {
   Hand,
   Button,
@@ -41,7 +40,7 @@ export const CADGame: FC<GameProps> = ({ games }) => {
   const [modalOpen, setModalOpen] = useState(true);
   const [rounds, currentRound] = useRealtimeRounds(params.gameId);
   const [currentRoundId, setCurrentRoundId] = useState<string>();
-
+  const history = useHistory();
   const [cardsOnHand, setCardsOnHand] = useState<Card[]>([]);
 
   const score = getScore(rounds);
@@ -190,7 +189,9 @@ export const CADGame: FC<GameProps> = ({ games }) => {
             <Button onClick={() => revealCards()}>Reveal cards</Button>
           )}
         </div>
-
+        <div className="table__back">
+            <MaterialButton variant="outlined" onClick={() => {history.push(`/`)}}>Tilbake til hovedside</MaterialButton>
+        </div>
         <div className="table__players">
           <div className="table__players__container">
             {currentRound &&
