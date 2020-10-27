@@ -1,21 +1,21 @@
 .player {
-  display: flex;
-  flex-direction: column;
-  margin: 12px;
+	display: flex;
+	flex-direction: column;
+	margin: 12px;
 
-  &__card-frame {
-    border: $dark 1px dashed;
-    border-radius: 4px;
-    padding: 6px;
-    height: 212px;
-    width: 212px;
-  }
-  &__username {
-    text-align: center;
-    margin-top: 8px;
-  }
-  &__score {
-    text-align: center;
-    margin-top: 8px;
-  }
+	&__card-frame {
+		border: $dark 1px dashed;
+		border-radius: 4px;
+		padding: 6px;
+		height: 212px;
+		width: 212px;
+	}
+	&__username {
+		text-align: center;
+		margin-top: 8px;
+	}
+	&__score {
+		text-align: center;
+		margin-top: 8px;
+	}
 }

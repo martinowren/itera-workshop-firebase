@@ -8,67 +8,65 @@ import { AuthContext } from './auth/AuthContext';
 import { HomePage, CADGame, LoginPage } from './pages';
 import PrivateRoute from './components/routeTypes/PrivateRoute';
 import PublicRoute from './components/routeTypes/PublicRoute';
-import {
-  AppBar,
-  Button,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#212121',
-    },
-  },
+	palette: {
+		primary: {
+			main: '#212121',
+		},
+	},
 });
 
 const App: FC = () => {
-  const authContext = useFirebaseAuth();
-  const games = useRealtimeGames();
+	const authContext = useFirebaseAuth();
+	const games = useRealtimeGames();
 
-  return (
-    <AuthContext.Provider value={authContext}>
-      <ThemeProvider theme={theme}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography style={{ flexGrow: 1 }} variant="h6">
-              {authContext.isLoggedIn
-                ? authContext.user?.displayName
-                : 'Welcome!'}
-            </Typography>
-            {authContext.isLoggedIn && (
-              <Button color="inherit" onClick={authContext.logout}>
-                Logout
-              </Button>
-            )}
-          </Toolbar>
-        </AppBar>
-        <div className="app">
-          <Switch>
-            <PrivateRoute
-              path="/game/:gameId"
-              authenticated={authContext.isLoggedIn}
-              games={games}
-              component={CADGame}
-            />
-            <PrivateRoute
-              exact
-              path="/"
-              authenticated={authContext.isLoggedIn}
-              games={games}
-              component={HomePage}
-            />
-            <PublicRoute
-              path="/login"
-              authenticated={authContext.isLoggedIn}
-              component={LoginPage}
-            />
-          </Switch>
-        </div>
-      </ThemeProvider>
-    </AuthContext.Provider>
-  );
+	return (
+		<AuthContext.Provider value={authContext}>
+			<ThemeProvider theme={theme}>
+				<AppBar position="static">
+					<Toolbar>
+						<Typography style={{ flexGrow: 1 }} variant="h6">
+							{authContext.isLoggedIn
+								? authContext.user?.displayName
+								: 'Welcome!'}
+						</Typography>
+						{authContext.isLoggedIn && (
+							<Button
+								color="inherit"
+								onClick={authContext.logout}
+							>
+								Logout
+							</Button>
+						)}
+					</Toolbar>
+				</AppBar>
+				<div className="app">
+					<Switch>
+						<PrivateRoute
+							path="/game/:gameId"
+							authenticated={authContext.isLoggedIn}
+							games={games}
+							component={CADGame}
+						/>
+						<PrivateRoute
+							exact
+							path="/"
+							authenticated={authContext.isLoggedIn}
+							games={games}
+							component={HomePage}
+						/>
+						<PublicRoute
+							path="/login"
+							authenticated={authContext.isLoggedIn}
+							component={LoginPage}
+						/>
+					</Switch>
+				</div>
+			</ThemeProvider>
+		</AuthContext.Provider>
+	);
 };
 
 export default App;

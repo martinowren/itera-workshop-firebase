@@ -1,45 +1,45 @@
 .table {
-  display: grid;
-  grid-template-areas:
-    'black-card controlls back'
-    'players players players'
-    'hand hand hand';
+	display: grid;
+	grid-template-areas:
+		'black-card controlls back'
+		'players players players'
+		'hand hand hand';
 
-  @media only screen and (max-width: 700px) {
-    grid-template-areas:
-      'controlls'
-      'black-card'
-      'players'
-      'back'
-      'hand';
-  }
+	@media only screen and (max-width: 700px) {
+		grid-template-areas:
+			'controlls'
+			'black-card'
+			'players'
+			'back'
+			'hand';
+	}
 
-  &__black-card {
-    grid-area: black-card;
-    padding: 12px;
-  }
-  &__controlls {
-    grid-area: controlls;
-    padding: 12px;
-  }
-  &__back {
-    grid-area: back;
-    padding: 12px;
-  }
-  &__players {
-    grid-area: players;
-    padding: 12px;
+	&__black-card {
+		grid-area: black-card;
+		padding: 12px;
+	}
+	&__controlls {
+		grid-area: controlls;
+		padding: 12px;
+	}
+	&__back {
+		grid-area: back;
+		padding: 12px;
+	}
+	&__players {
+		grid-area: players;
+		padding: 12px;
 
-    &__container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-  &__hand {
-    grid-area: hand;
-    padding: 12px;
-    flex: 1;
-    display: flex;
-    overflow: auto;
-  }
+		&__container {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+	&__hand {
+		grid-area: hand;
+		padding: 12px;
+		flex: 1;
+		display: flex;
+		overflow: auto;
+	}
 }

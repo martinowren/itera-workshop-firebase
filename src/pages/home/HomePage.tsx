@@ -4,20 +4,20 @@ import GameList from './GameList';
 import { Game } from '../../types';
 
 export interface HomePageProps {
-  games: Game[];
+	games: Game[];
 }
 
 export const HomePage: FC<HomePageProps> = ({ games }) => {
-  return (
-    <div className="home">
-      <h1>Cards Against Developers!</h1>
-      <CreateGame />
+	return (
+		<div className="home">
+			<h1>Cards Against Developers!</h1>
+			<CreateGame />
 
-      {games?.length > 0 ? (
-        <GameList games={games} />
-      ) : (
-        <p> There are no active games. Try creating a new one!</p>
-      )}
-    </div>
-  );
+			{games?.length > 0 ? (
+				<GameList games={games} />
+			) : (
+				<p> There are no active games. Try creating a new one!</p>
+			)}
+		</div>
+	);
 };
